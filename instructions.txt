@@ -1,0 +1,7 @@
+npm install
+npm install create-react-app -g
+npm install styled-components@^3.4.1
+npm install react-simple-chatbot@^0.3.8
+npm install --save react-kawaii
+npm run start:server
+npm start

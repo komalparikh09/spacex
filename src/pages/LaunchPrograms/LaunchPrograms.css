@@ -1,0 +1,349 @@
+body {
+  background-color: #E3E3E3;
+}
+
+.edit-product__form {
+    width: 90%;
+    margin: auto;
+  }
+   @media (min-width: 768px) {
+    .edit-product__form {
+      width: 40rem;
+    }
+  }
+   .display {
+    text-align: center;
+    border-collapse: collapse;
+    border: 3px solid #ddd;
+    /* width: 90%; */
+    word-wrap: break-word;
+  }
+   .display td, .display th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+   .display th {
+    white-space: nowrap;
+  }
+   .display tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+   .display tr:hover {
+    background-color: #ddd;
+  }
+   .display th {
+    text-align: center;
+    background-color: #DCDCDC;
+    color: #000000;
+  }
+   /* td.details-control {
+    background: url('../../images/greenplus.jpg') no-repeat center center;
+    background-size: 60%;
+    cursor: pointer;
+  }
+  tr.shown td.details-control {
+    background: url('../../images/redminus.jpg') no-repeat center center;
+    background-size: 60%;
+  } */
+   /* .parent ~ .cchild {
+    display: none;
+  }
+  .open .parent ~ .cchild {
+    display: table-row;
+  }
+  .parent {
+    cursor: pointer;
+  }
+  tbody {
+    color: #212121;
+  }
+  .open {
+    background-color: #0BA6B6;
+  }
+  .open .cchild {
+    background-color: #0BA6B6;
+    color: white;
+  }
+  .parent > *:last-child {
+    width: 30px;
+  } */
+   /* .child {
+    background-color: #0BA6B6;
+    color: white;
+    font-weight: bold;
+    text-align: left;
+  } */
+   /* DataTables Responsive With FontAwesome */
+   table.dataTable.dtr-inline.collapsed > tbody > tr > td:first-child,
+  table.dataTable.dtr-inline.collapsed > tbody > tr > th:first-child {
+    position: relative;
+    padding-left: 30px;
+    cursor: pointer;
+  }
+  table.dataTable.dtr-inline.collapsed > tbody > tr > td:first-child:before,
+  table.dataTable.dtr-inline.collapsed > tbody > tr > th:first-child:before {
+    /*top: 8px;
+    left: 4px;
+    height: 16px;
+    width: 16px;*/
+    display: block;
+    position: absolute;
+    /*color: white;
+    border: 2px solid white;
+    border-radius: 16px;
+    text-align: center;
+    line-height: 14px;
+    box-shadow: 0 0 3px #444;
+    box-sizing: content-box;
+    content: '+';
+    background-color: #31b131;*/
+    display: block;
+    position: absolute;
+    font-family: "FontAwesome";
+    content: '\f0fe';
+  }
+  table.dataTable.dtr-inline.collapsed > tbody > tr > td:first-child.dataTables_empty:before,
+  table.dataTable.dtr-inline.collapsed > tbody > tr > th:first-child.dataTables_empty:before {
+    display: none;
+  }
+  table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before,
+  table.dataTable.dtr-inline.collapsed > tbody > tr.parent > th:first-child:before {
+    /*content: '-';
+    background-color: #d33333;*/
+    font-family: "FontAwesome";
+    content: '\f146';
+  }
+  table.dataTable.dtr-inline.collapsed > tbody > tr.child td:before {
+    display: none;
+  }
+  table.dataTable.dtr-inline.collapsed.compact > tbody > tr > td:first-child,
+  table.dataTable.dtr-inline.collapsed.compact > tbody > tr > th:first-child {
+    padding-left: 27px;
+  }
+  table.dataTable.dtr-inline.collapsed.compact > tbody > tr > td:first-child:before,
+  table.dataTable.dtr-inline.collapsed.compact > tbody > tr > th:first-child:before {
+    top: 5px;
+    left: 4px;
+    height: 14px;
+    width: 14px;
+    border-radius: 14px;
+    line-height: 12px;
+    background-color: #0000CD;
+    color: #E3E3E3;
+  }
+  table.dataTable.dtr-column > tbody > tr > td.control,
+  table.dataTable.dtr-column > tbody > tr > th.control {
+    position: relative;
+    cursor: pointer;
+  }
+  table.dataTable.dtr-column > tbody > tr > td.control:before,
+  table.dataTable.dtr-column > tbody > tr > th.control:before {
+    /*top: 50%;
+    left: 50%;
+    height: 16px;
+    width: 16px;
+    margin-top: -10px;
+    margin-left: -10px;*/
+    display: block;
+    position: absolute;
+    font-family: "FontAwesome";
+    content: '\f0fe';
+    /*color: white;
+    border: 2px solid white;
+    border-radius: 16px;
+    text-align: center;
+    line-height: 14px;
+    box-shadow: 0 0 3px #444;
+    box-sizing: content-box;
+    content: '+';
+    background-color: #31b131;*/
+  }
+  table.dataTable.dtr-column > tbody > tr.parent td.control:before,
+  table.dataTable.dtr-column > tbody > tr.parent th.control:before {
+    /*content: '-';
+    background-color: #d33333;*/
+   font-family: "FontAwesome";
+    content: '\f146';
+  }
+  table.dataTable > tbody > tr.child {
+    padding: 0.5em 1em;
+  }
+  table.dataTable > tbody > tr.child:hover {
+    background: transparent !important;
+  }
+  table.dataTable > tbody > tr.child ul {
+    display: inline-block;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  table.dataTable > tbody > tr.child ul li {
+    border-bottom: 1px solid #0000CD;
+    padding: 0.5em 0;
+  }
+  table.dataTable > tbody > tr.child ul li:first-child {
+    padding-top: 0;
+  }
+  table.dataTable > tbody > tr.child ul li:last-child {
+    border-bottom: none;
+  }
+  table.dataTable > tbody > tr.child span.dtr-title {
+    display: inline-block;
+    min-width: 75px;
+    font-weight: bold;
+  }
+
+  .user-page__image {
+    width: 25rem !important;
+    height: 25rem !important;
+    background-position: center !important;
+    background-size: cover !important;
+    margin: auto !important;
+  }
+
+  .user-person__controls button,
+  .user-person__controls a {
+    text-decoration: none;
+    cursor: pointer !important;
+    font: inherit !important;
+    border: none;
+    background: #0000CD !important;
+    color: white !important;
+    padding: 0;
+    /* margin: 0 0.5rem; */
+  }
+   .user-person__controls button:hover,
+  .user-person__controls button:active,
+  .user-person__controls a:hover,
+  .user-person__controls a:active {
+    color: #0000CD !important;
+    background-color: white !important;
+  }
+
+  .line-divider {
+    width: 70%;
+    align-self: center;
+  }
+
+  .filterBox {
+    height: 25px;
+    width: 55px;
+    border-radius: 10%;
+    color: #000000;
+    background-color: #9DDF7A;
+    border: none;
+    outline: none;
+  }
+
+  .filterBoxSelected {
+    height: 25px;
+    width: 55px;
+    border-radius: 10%;
+    color: #000000;
+    background-color: #52C117;
+    border: none;
+    outline: none;
+  }
+
+  .filterBoxText {
+    top: 50%;
+    left: 50%;
+    align-self: center;
+    color: #000000;
+  }
+
+  .filter-name {
+    align-self: center;
+    text-align: center;
+  }
+
+  button:hover,
+  button:active {
+    cursor: pointer;
+  }
+
+  .main-table {
+    align-self: center;
+  }
+
+  .filter-table {
+    align-self: center;
+    align-content: center;
+    text-align: center;
+    width: 100%;
+  }
+
+  .filter-div {
+    background-color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 1%;
+  }
+
+  .prev-next {
+    /* align-self: center;
+    align-content: center;
+    text-align: center; */
+    margin-left: 30%;
+    margin-right: 40%;
+  }
+
+  .bg
+  {
+    width: fit-content;
+    height: fit-content;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 0;
+  }
+
+  .logo {
+    width: 100px;
+    height: 100px;
+  }
+
+  .left-div {
+    float: left;
+    width: 20%;
+    vertical-align: top;
+  }
+
+  .right-div {
+    float: right;
+    width: 80%;
+    vertical-align: top;
+  }
+
+  .center-span {
+    align-self: center;
+    align-content: center;
+    text-align: center;
+  }
+
+  @media screen and (max-width:1024px) {
+    .left-div {
+      width: 30%;
+    }
+    .right-div {
+      width:70%; /* The width is 100%, when the viewport is 1024px or smaller for tablet */
+      float: left;
+    }
+    /* .filter-table {
+      border-spacing: 0.02rem;
+    } */
+  }
+
+  @media screen and (max-width:700px) {
+    .left-div, .right-div {
+      width:100%; /* The width is 100%, when the viewport is 700px or smaller for mobile */
+      float: left;
+    }
+    .logo {
+      width: 100%;
+      height: 200px;
+    }
+    /* .filter-table {
+      border-spacing: 0.02rem;
+    } */
+  }

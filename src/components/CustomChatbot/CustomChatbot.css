@@ -1,0 +1,18 @@
+.kawaii-bot-emojis {
+    background-color: #9DDF7A;
+    border-color: #9DDF7A;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.26);
+    margin: 1rem 1rem;
+}
+
+.kawaii-bot-emojis button:hover {
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+.bgDiv {
+    background-color: #f6f6f6;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+    margin: 1rem 1rem;
+}

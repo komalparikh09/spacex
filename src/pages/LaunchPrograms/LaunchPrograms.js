@@ -182,8 +182,6 @@ class LaunchProgramsPage extends Component {
 
   filterLaunches = event => {
     event.preventDefault();
-    console.log(this.state.filteredLaunches);
-    console.log(filteredLaunchesArr);
     filteredLaunchesArr = [];
     this.setState({ isLoading: true, filteredLaunches: [] });
     if (launchYearArr.length == 0) {
@@ -247,8 +245,6 @@ class LaunchProgramsPage extends Component {
             return launch.launch_landing == 'false';
           });
         }
-        console.log('Final Array');
-        console.log(filteredLaunchesArr);
         this.setState({ filteredLaunches: filteredLaunchesArr });
       })
       .catch(err => {

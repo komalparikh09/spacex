@@ -7,10 +7,6 @@ const router = Router();
 // Get multiple launches based on the filters selected
 const launches = [];
 router.get('/', (req, res, next) => {
-    console.log(req.query);
-    console.log(req.query.launch_year);
-    console.log(req.query.launch_success);
-    console.log(req.query.launch_landing);
     if (req.query.launch_year && req.query.launch_success && req.query.launch_landing) {
         db.getDb()
             .db()

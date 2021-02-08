@@ -32,5 +32,6 @@ db.initDb((err, db) => {
     console.log(err);
   } else {
     app.listen(process.env.PORT || 3100);
+    console.log(process.env.PORT);
   }
 });

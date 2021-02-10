@@ -13,7 +13,7 @@
 .env
 
 # dekstop.ini file
-.desktop.ini
+desktop.ini
 
 # misc
 .DS_Store

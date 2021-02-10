@@ -5,7 +5,6 @@ import CustomChatbot from '../../components/CustomChatbot/CustomChatbot';
 import Button from '../../components/Button/Button';
 import './LaunchPrograms.css';
 const $ = window.$;
-require('dotenv').config();
 
 var launchYearArr = [];
 var launchSuccessArr = [];

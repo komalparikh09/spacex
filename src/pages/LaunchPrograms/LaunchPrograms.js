@@ -2,26 +2,16 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import LaunchCards from '../../components/LaunchCards/LaunchCards';
 import CustomChatbot from '../../components/CustomChatbot/CustomChatbot';
-import Input from '../../components/Input/Input';
 import Button from '../../components/Button/Button';
 import './LaunchPrograms.css';
 const $ = window.$;
+require('dotenv').config();
 
 var launchYearArr = [];
 var launchSuccessArr = [];
 var launchLandingArr = [];
 var filteredLaunchesArr = [];
 var successValues = ['True', 'False'];
-var images = ['https://i.redd.it/gib13kvyjit41.png',
-  'https://i.redd.it/2aahjwc9f50y.png',
-  'https://upload.wikimedia.org/wikipedia/commons/f/f7/Sts-120-patch.png',
-  'https://upload.wikimedia.org/wikipedia/commons/d/dd/ISS_Expedition_25_Patch.png',
-  'https://i.redd.it/8pj99ktodiyy.png',
-  'https://www.elonx.net/wp-content/uploads/18-F7X9KAc.png',
-  'https://i.imgur.com/lcpsq0x.png',
-  'https://spacextimemachine.com/images/78/923623001598818554.jpeg',
-  'https://upload.wikimedia.org/wikipedia/commons/4/4e/SpaceX_CRS-4_Patch.png',
-  'https://upload.wikimedia.org/wikipedia/commons/a/ac/SpaceX_CRS-6_Patch.png'];
 
 class LaunchProgramsPage extends Component {
 
@@ -88,7 +78,7 @@ class LaunchProgramsPage extends Component {
     //   });
     this.setState({ isLoading: true });
     let request;
-    request = axios.get('http://localhost:3100/launches');
+    request = axios.get('/launches');
     request
       .then(res => {
         const launchResponse = res.data;
@@ -165,7 +155,7 @@ class LaunchProgramsPage extends Component {
       launchData = this.state.launches[i];
       let request;
       request = axios.post(
-        'http://localhost:3100/launches', launchData
+        '/launches', launchData
       );
       request
         .then(result => {
@@ -184,19 +174,19 @@ class LaunchProgramsPage extends Component {
     event.preventDefault();
     filteredLaunchesArr = [];
     this.setState({ isLoading: true, filteredLaunches: [] });
-    if (launchYearArr.length == 0) {
+    if (launchYearArr.length === 0) {
       for (var i = 2006; i <= 2020; i++) {
         launchYearArr.push(i);
       }
     }
-    if (launchSuccessArr.length == 0) {
+    if (launchSuccessArr.length === 0) {
       launchSuccessArr = ['true', 'false'];
     }
     if (launchSuccessArr.length >= 3) {
       launchSuccessArr.splice(0, 1);
       launchSuccessArr.splice(0, 1);
     }
-    if (launchLandingArr.length == 0) {
+    if (launchLandingArr.length === 0) {
       launchLandingArr = ['true', 'false', 'N/A'];
     }
     if (launchLandingArr.length >= 4) {
@@ -210,7 +200,7 @@ class LaunchProgramsPage extends Component {
       launch_landing: launchLandingArr
     };
     let request;
-    request = axios.get('http://localhost:3100/searchlaunches/', { params: launchSearchData });
+    request = axios.get('/searchlaunches/', { params: launchSearchData });
     request
       .then(result => {
         this.setState({ isLoading: false });
@@ -225,24 +215,24 @@ class LaunchProgramsPage extends Component {
         for (var key in obj) {
           filteredLaunchesArr.push(obj[key]);
         }
-        if (launchSuccessArr.length == 1 && launchSuccessArr[0] == 'true') {
+        if (launchSuccessArr.length === 1 && launchSuccessArr[0] === 'true') {
           filteredLaunchesArr = filteredLaunchesArr.filter(function (launch) {
-            return launch.launch_success == 'true';
+            return launch.launch_success === 'true';
           });
         }
-        else if (launchSuccessArr.length == 1 && launchSuccessArr[0] == 'false') {
+        else if (launchSuccessArr.length === 1 && launchSuccessArr[0] === 'false') {
           filteredLaunchesArr = filteredLaunchesArr.filter(function (launch) {
-            return launch.launch_success == 'false';
+            return launch.launch_success === 'false';
           });
         }
-        if (launchLandingArr.length == 1 && launchLandingArr[0] == 'true') {
+        if (launchLandingArr.length === 1 && launchLandingArr[0] === 'true') {
           filteredLaunchesArr = filteredLaunchesArr.filter(function (launch) {
-            return launch.launch_landing == 'true';
+            return launch.launch_landing === 'true';
           });
         }
-        else if (launchLandingArr.length == 1 && launchLandingArr[0] == 'false') {
+        else if (launchLandingArr.length === 1 && launchLandingArr[0] === 'false') {
           filteredLaunchesArr = filteredLaunchesArr.filter(function (launch) {
-            return launch.launch_landing == 'false';
+            return launch.launch_landing === 'false';
           });
         }
         this.setState({ filteredLaunches: filteredLaunchesArr });
@@ -256,52 +246,9 @@ class LaunchProgramsPage extends Component {
       });
   };
 
-  // searchLaunches = event => {
-  //   this.setState({ isLoading: false });
-  //   let request;
-  //   request = axios.get('https://api.spacexdata.com/v3/launches?limit=100' + this.state.selectedFilter);
-  //   request
-  //     .then(result => {
-  //       const launchResponse = result.data;
-  //       console.log(this.state.selectedFilter);
-  //       for (var i = 0; i < launchResponse.length; i++) {
-  //         if (launchResponse[i].rocket.first_stage.cores[0].land_success == null && !launchResponse[i].rocket.first_stage.cores[0].landing_intent) {
-  //           launchResponse[i]["launch_landing"] = 'N/A';
-  //         }
-  //         else if (launchResponse[i].rocket.first_stage.cores[0].land_success == null && launchResponse[i].rocket.first_stage.cores[0].landing_intent) {
-  //           launchResponse[i]["launch_landing"] = 'false';
-  //         }
-  //         else if (launchResponse[i].rocket.first_stage.cores[0].land_success) {
-  //           launchResponse[i]["launch_landing"] = 'true';
-  //         }
-  //         else if (!launchResponse[i].rocket.first_stage.cores[0].land_success) {
-  //           launchResponse[i]["launch_landing"] = 'false';
-  //         }
-  //         if (launchResponse[i].launch_success) {
-  //           launchResponse[i]["launch_success"] = 'true';
-  //         }
-  //         else {
-  //           launchResponse[i]["launch_success"] = 'false';
-  //         }
-  //         launchResponse[i]["image"] = images[this.getRandomIn(10)];
-  //         launchResponse[i]["_id"] = i;
-  //       }
-  //       this.setState({ isLoading: false, launches: launchResponse });
-  //       //this.props.history.replace('/launchprograms' + this.state.selectedFilter);
-  //     })
-  //     .catch(err => {
-  //       this.setState({ isLoading: false });
-  //       console.log(err);
-  //       this.props.onError(
-  //         'Fetching launches failed. Please try again later.'
-  //       );
-  //     });
-  // };
-
   selectFilter = (event, btnId) => {
     var btnFilter = document.getElementById(btnId);
     this.setState({ isActive: !this.state.isActive, filteredLaunches: [] });
-    // $(btnFilter).className = this.state.isActive ? "filterBoxSelected" : "filterBox";
     $(btnFilter).toggleClass("filterBox filterBoxSelected");
     if (btnFilter.className.includes('filterBoxSelected')) {
       $(btnFilter).className = 'filterBoxSelected';
@@ -318,9 +265,6 @@ class LaunchProgramsPage extends Component {
       this.removeFilter(event, btnId);
       this.filterLaunches(event);
     }
-    // launchYearArr = [];
-    // launchSuccessArr = [];
-    // launchLandingArr = [];
   };
 
   addFilter = (event, filterId) => {
@@ -333,60 +277,35 @@ class LaunchProgramsPage extends Component {
       launchYearArr.push(filterId);
       this.setState(prevState => ({
         launchYearsSelected: [...prevState.launchYearsSelected, filterId]
-      })
-        // , () => { 
-        //   console.log(this.state.launchYearsSelected);
-        //   this.filterLaunches(event);
-        // }
-      );
+      }));
     }
     else if (filterId.includes('launchSuccessTrue')) {
       filter = filter.concat('/launch_success=true');
       launchSuccessArr.push('true');
       this.setState(prevState => ({
         launchSuccessSelected: [...prevState.launchSuccessSelected, 'true']
-      })
-        // , () => { 
-        //   console.log(this.state.launchSuccessSelected);
-        //   this.filterLaunches(event);
-        // }
-      );
+      }));
     }
     else if (filterId.includes('launchSuccessFalse')) {
       filter = filter.concat('/launch_success=false');
       launchSuccessArr.push('false');
       this.setState(prevState => ({
         launchSuccessSelected: [...prevState.launchSuccessSelected, 'false']
-      })
-        // , () => { 
-        //   console.log(this.state.launchSuccessSelected);
-        //   this.filterLaunches(event);
-        // }
-      );
+      }));
     }
     else if (filterId.includes('landSuccessTrue')) {
       filter = filter.concat('/land_success=true');
       launchLandingArr.push('true');
       this.setState(prevState => ({
         launchLandingSelected: [...prevState.launchLandingSelected, 'true']
-      })
-        // , () => { 
-        //   console.log(this.state.launchLandingSelected);
-        //   this.filterLaunches(event);
-        // }
-      );
+      }));
     }
     else if (filterId.includes('landSuccessFalse')) {
       filter = filter.concat('/land_success=false');
       launchLandingArr.push('false');
       this.setState(prevState => ({
         launchLandingSelected: [...prevState.launchLandingSelected, 'false']
-      })
-        // , () => { 
-        //   console.log(this.state.launchLandingSelected);
-        //   this.filterLaunches(event);
-        // }
-      );
+      }));
     }
     this.setState({ selectedFilter: filter });
   };
@@ -575,14 +494,14 @@ class LaunchProgramsPage extends Component {
     if (this.state.initialRender) {
       content = (
         <div>
-          <img className="bg" src="https://cdn.dribbble.com/users/46035/screenshots/1978211/kareo_ehr_rocket.gif" />
+          <img className="bg" src="https://cdn.dribbble.com/users/46035/screenshots/1978211/kareo_ehr_rocket.gif" alt="Application Initial Render Animation"/>
         </div>
       );
     }
     else {
       content = (
         <div>
-          <img className="logo" src="https://i.pinimg.com/originals/32/b8/82/32b88274cc7cd521b05fbaad65649a68.gif" />
+          <img className="logo" src="https://i.pinimg.com/originals/32/b8/82/32b88274cc7cd521b05fbaad65649a68.gif" alt="SpaceX Logo Animation" />
           <b><h1>SpaceX Launch Programs</h1></b>
           {/* <button id="addlaunch" onClick={this.addLaunchHandler}>Add Launch Programs</button> */}
           <div className="left-div">
@@ -591,7 +510,7 @@ class LaunchProgramsPage extends Component {
           <div className="right-div">
             {this.state.isLoading ?
               <div>
-                <img className="bg" src="https://cdn.dribbble.com/users/623359/screenshots/2972736/rocket-launch.gif" />
+                <img className="bg" src="https://cdn.dribbble.com/users/623359/screenshots/2972736/rocket-launch.gif" alt="Content Loading Animation" />
               </div>
              : launchCards}
             <br />
@@ -609,13 +528,6 @@ class LaunchProgramsPage extends Component {
         </div>
       );
     }
-    // if (this.state.isLoading && !this.state.initialRender) {
-    //   content = (
-    //     <div>
-    //       <img className="bg" src="https://cdn.dribbble.com/users/623359/screenshots/2972736/rocket-launch.gif" />
-    //     </div>
-    //   );
-    // }
     return <main>{content}</main>;
   }
 }

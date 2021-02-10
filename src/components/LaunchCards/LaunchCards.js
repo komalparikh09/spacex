@@ -1,6 +1,5 @@
 import React from 'react';
 import LaunchCard from './LaunchCard/LaunchCard';
-import { Container, Box, BoxTitle, BoxText } from './../Home/HomeStyles';
 import './LaunchCards.css';
 
 const launchCards = props => (

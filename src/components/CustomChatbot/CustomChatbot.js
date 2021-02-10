@@ -3,17 +3,12 @@ import 'react-dom';
 import ChatBot from 'react-simple-chatbot';
 import { ThemeProvider } from 'styled-components';
 import PropTypes from 'prop-types';
-import { Chocolate, Planet, File, Ghost, IceCream, Backpack, Cat, KawaiiMood } from 'react-kawaii';
+import { Chocolate, Planet, File, Ghost, IceCream, Backpack, Cat } from 'react-kawaii';
 import './CustomChatbot.css';
  
 class KawaiiRating extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            loading: true,
-            result: '',
-            trigger: false,
-        };
         this.triggerNext = this.triggerNext.bind(this);
     }
     triggerNext() {
@@ -22,7 +17,6 @@ class KawaiiRating extends Component {
         });
     }
     render() {
-        const { trigger, loading, result } = this.state;
         return (<div className="bgDiv">
             <button className="kawaii-bot-emojis" onClick={() => this.triggerNext()}><File size={100} mood="ko" color="#FFFA8C" /></button>
             <button className="kawaii-bot-emojis" onClick={() => this.triggerNext()}><Planet size={100} mood="sad" color="#83D1FB" eyes="blink" /></button>

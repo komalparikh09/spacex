@@ -1,6 +1,7 @@
 const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
+require('dotenv').config();
 const mongodb = require('mongodb').MongoClient;
 
 const launchRoutes = require('./routes/launches');
@@ -31,7 +32,6 @@ db.initDb((err, db) => {
   if (err) {
     console.log(err);
   } else {
-    app.listen(process.env.PORT || 3100);
-    console.log(process.env.PORT);
+    app.listen(process.env.BACKEND_PORT || 3100);
   }
 });

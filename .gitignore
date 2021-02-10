@@ -9,7 +9,11 @@
 # production
 /build
 
-/.env
+# env file
+.env
+
+# dekstop.ini file
+.desktop.ini
 
 # misc
 .DS_Store

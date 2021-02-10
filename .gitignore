@@ -10,7 +10,7 @@
 /build
 
 # env file
-# .env
+.env
 
 # dekstop.ini file
 desktop.ini

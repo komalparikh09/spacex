@@ -29,11 +29,11 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "set NODE_ENV=production && react-scripts build",
+    "build": "NODE_ENV=production && react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "start:server": "set NODE_ENV=production && node ./backend/app.js",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install && set NODE_ENV=production && npm run build"
+    "start:server": "NODE_ENV=production && node ./backend/app.js",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install && NODE_ENV=production && npm run build"
   },
   "engines": {
     "node": "^14.15.1"

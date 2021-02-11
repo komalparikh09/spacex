@@ -32,6 +32,6 @@ db.initDb((err, db) => {
   if (err) {
     console.log(err);
   } else {
-    app.listen(process.env.BACKEND_PORT || 3100);
+    app.listen(process.env.PORT || 3100);
   }
 });

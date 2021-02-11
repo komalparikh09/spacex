@@ -4,7 +4,7 @@ import LaunchCards from '../../components/LaunchCards/LaunchCards';
 import CustomChatbot from '../../components/CustomChatbot/CustomChatbot';
 import Button from '../../components/Button/Button';
 import './LaunchPrograms.css';
-import config from './../../configs';
+import { hostconfig as config } from './../../configs';
 const $ = window.$;
 
 console.log(config);

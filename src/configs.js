@@ -1,5 +1,3 @@
-import { config } from 'dotenv/types';
-import React from 'react';
 require('dotenv').config();
 
 const configs = {
@@ -11,6 +9,4 @@ const configs = {
     },
 };
 
-var hostconfig = configs[process.env.NODE_ENV];
-
-export default hostconfig;
+module.exports.config = configs[process.env.NODE_ENV];

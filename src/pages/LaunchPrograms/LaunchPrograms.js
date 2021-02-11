@@ -4,8 +4,11 @@ import LaunchCards from '../../components/LaunchCards/LaunchCards';
 import CustomChatbot from '../../components/CustomChatbot/CustomChatbot';
 import Button from '../../components/Button/Button';
 import './LaunchPrograms.css';
+import config from './../../configs';
 const $ = window.$;
 
+console.log(config);
+var hosturl = `${config.config.SERVER_URI}`;
 var launchYearArr = [];
 var launchSuccessArr = [];
 var launchLandingArr = [];
@@ -77,7 +80,7 @@ class LaunchProgramsPage extends Component {
     //   });
     this.setState({ isLoading: true });
     let request;
-    request = axios.get('/launches');
+    request = axios.get(`${config.config.SERVER_URI}/launches`);
     request
       .then(res => {
         const launchResponse = res.data;
@@ -153,9 +156,7 @@ class LaunchProgramsPage extends Component {
     for (var i = 0; i < this.state.launches.length; i++) {
       launchData = this.state.launches[i];
       let request;
-      request = axios.post(
-        '/launches', launchData
-      );
+      request = axios.post(`${config.config.SERVER_URI}/launches`, launchData);
       request
         .then(result => {
           this.setState({ isLoading: false });
@@ -199,7 +200,7 @@ class LaunchProgramsPage extends Component {
       launch_landing: launchLandingArr
     };
     let request;
-    request = axios.get('/searchlaunches/', { params: launchSearchData });
+    request = axios.get(`${config.config.SERVER_URI}/searchlaunches/`, { params: launchSearchData });
     request
       .then(result => {
         this.setState({ isLoading: false });

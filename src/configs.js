@@ -1,3 +1,4 @@
+import React from 'react';
 require('dotenv').config();
 
 const configs = {

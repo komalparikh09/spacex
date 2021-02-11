@@ -1,3 +1,4 @@
+import { config } from 'dotenv/types';
 import React from 'react';
 require('dotenv').config();
 
@@ -10,4 +11,7 @@ const configs = {
     },
 };
 
-module.exports.config = configs[process.env.NODE_ENV];
+//module.exports.config = configs[process.env.NODE_ENV];
+var config = configs[process.env.NODE_ENV];
+
+export default config;

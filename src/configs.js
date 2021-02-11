@@ -11,7 +11,6 @@ const configs = {
     },
 };
 
-//module.exports.config = configs[process.env.NODE_ENV];
 var config = configs[process.env.NODE_ENV];
 
 export default config;

@@ -9,6 +9,7 @@ const $ = window.$;
 
 console.log(config);
 console.log(process.env.NODE_ENV);
+console.log(process.env.PORT);
 var hosturl = `${config.config.SERVER_URI}`;
 var launchYearArr = [];
 var launchSuccessArr = [];

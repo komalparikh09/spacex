@@ -16,6 +16,17 @@ var launchSuccessArr = [];
 var launchLandingArr = [];
 var filteredLaunchesArr = [];
 var successValues = ['True', 'False'];
+/* sample images used because mission patches in the API are from imgbox which is banned in India */
+var images = ['https://i.redd.it/gib13kvyjit41.png',
+  'https://i.redd.it/2aahjwc9f50y.png',
+  'https://upload.wikimedia.org/wikipedia/commons/f/f7/Sts-120-patch.png',
+  'https://upload.wikimedia.org/wikipedia/commons/d/dd/ISS_Expedition_25_Patch.png',
+  'https://i.redd.it/8pj99ktodiyy.png',
+  'https://www.elonx.net/wp-content/uploads/18-F7X9KAc.png',
+  'https://i.imgur.com/lcpsq0x.png',
+  'https://spacextimemachine.com/images/78/923623001598818554.jpeg',
+  'https://upload.wikimedia.org/wikipedia/commons/4/4e/SpaceX_CRS-4_Patch.png',
+  'https://upload.wikimedia.org/wikipedia/commons/a/ac/SpaceX_CRS-6_Patch.png']; 
 
 class LaunchProgramsPage extends Component {
 

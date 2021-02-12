@@ -2,7 +2,7 @@
 
 const configs = {
     production: {
-        SERVER_URI: 'https://warm-coast-29891.herokuapp.com',
+        SERVER_URI: 'https://warm-coast-29891.herokuapp.com/api',
     },
     development: {
         SERVER_URI: 'http://localhost:3100',

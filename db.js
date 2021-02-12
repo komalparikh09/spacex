@@ -3,7 +3,8 @@ const mongodb = require('mongodb');
 const MongoClient = mongodb.MongoClient;
 const mongoDbUrl = process.env.DATABASE_URL;
 let _db;
-
+console.log('mongodburl' + process.env.DATABASE_URL);
+console.log('mongodburl' + process.env.MONGODB_URI);
 const initDb = callback => {
   if (_db) {
     console.log('Database is already initialized!');

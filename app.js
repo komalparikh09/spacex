@@ -27,12 +27,11 @@ app.use((req, res, next) => {
 
 app.use('/launches', launchRoutes);
 app.use('/searchlaunches', searchlaunchRoutes);
-
+console.log('nodeenv' + process.env.NODE_ENV);
 db.initDb((err, db) => {
   if (err) {
     console.log(err);
   } else {
-    console.log('port' + process.env.PORT);
     app.listen(process.env.PORT || 3100);
   }
 });

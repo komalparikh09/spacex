@@ -1,10 +1,9 @@
 require('dotenv').config();
 const mongodb = require('mongodb');
 const MongoClient = mongodb.MongoClient;
-const mongoDbUrl = process.env.DATABASE_URL;
+const mongoDbUrl = process.env.MONGODB_URI;
 let _db;
-console.log('mongodburl' + process.env.DATABASE_URL);
-console.log('mongodburl' + process.env.MONGODB_URI);
+
 const initDb = callback => {
   if (_db) {
     console.log('Database is already initialized!');

@@ -46,55 +46,55 @@ class LaunchProgramsPage extends Component {
   }
 
   fetchData = () => {
-    // axios.get('https://api.spacexdata.com/v3/launches?limit=100' + this.state.selectedFilter)
-    //   .then(res => {
-    //     const launchResponse = res.data;
-    //     for (var i = 0; i < launchResponse.length; i++) {
-    //       if (launchResponse[i].rocket.first_stage.cores[0].land_success == null && !launchResponse[i].rocket.first_stage.cores[0].landing_intent) {
-    //         launchResponse[i]["launch_landing"] = 'N/A';
-    //       }
-    //       else if (launchResponse[i].rocket.first_stage.cores[0].land_success == null && launchResponse[i].rocket.first_stage.cores[0].landing_intent) {
-    //         launchResponse[i]["launch_landing"] = 'false';
-    //       }
-    //       else if (launchResponse[i].rocket.first_stage.cores[0].land_success) {
-    //         launchResponse[i]["launch_landing"] = 'true';
-    //       }
-    //       else if (!launchResponse[i].rocket.first_stage.cores[0].land_success) {
-    //         launchResponse[i]["launch_landing"] = 'false';
-    //       }
-    //       if (launchResponse[i].launch_success) {
-    //         launchResponse[i]["launch_success"] = 'true';
-    //       }
-    //       else {
-    //         launchResponse[i]["launch_success"] = 'false';
-    //       }
-    //       launchResponse[i]["image"] = images[this.getRandomIn(10)];
-    //       launchResponse[i]["_id"] = i;
-    //     }
-    //     //this.props.history.replace('/launchprograms' + this.state.selectedFilter);
-    //     console.log(this.state.selectedFilter);
-    //     this.setState({ launches: launchResponse });
-    //   })
-    //   .catch(err => {
-    //     this.setState({ isLoading: false, launches: [] });
-    //     this.props.onError('Loading search results for launches failed. Please try again later.');
-    //     console.log(err);
-    //   });
-    this.setState({ isLoading: true });
-    let request;
-    request = axios.get(`${config.config.SERVER_URI}/launches`);
-    request
+    axios.get('https://api.spacexdata.com/v3/launches?limit=100' + this.state.selectedFilter)
       .then(res => {
         const launchResponse = res.data;
-        this.setState({ isLoading: false, launches: launchResponse });
+        for (var i = 0; i < launchResponse.length; i++) {
+          if (launchResponse[i].rocket.first_stage.cores[0].land_success == null && !launchResponse[i].rocket.first_stage.cores[0].landing_intent) {
+            launchResponse[i]["launch_landing"] = 'N/A';
+          }
+          else if (launchResponse[i].rocket.first_stage.cores[0].land_success == null && launchResponse[i].rocket.first_stage.cores[0].landing_intent) {
+            launchResponse[i]["launch_landing"] = 'false';
+          }
+          else if (launchResponse[i].rocket.first_stage.cores[0].land_success) {
+            launchResponse[i]["launch_landing"] = 'true';
+          }
+          else if (!launchResponse[i].rocket.first_stage.cores[0].land_success) {
+            launchResponse[i]["launch_landing"] = 'false';
+          }
+          if (launchResponse[i].launch_success) {
+            launchResponse[i]["launch_success"] = 'true';
+          }
+          else {
+            launchResponse[i]["launch_success"] = 'false';
+          }
+          launchResponse[i]["image"] = images[this.getRandomIn(10)];
+          launchResponse[i]["_id"] = i;
+        }
+        //this.props.history.replace('/launchprograms' + this.state.selectedFilter);
+        this.setState({ launches: launchResponse });
       })
       .catch(err => {
-        this.setState({ isLoading: false });
+        this.setState({ isLoading: false, launches: [] });
+        this.props.onError('Loading search results for launches failed. Please try again later.');
         console.log(err);
-        this.props.onError(
-          'Fetching launch programs failed. Please try again later.'
-        );
       });
+      //mongodb
+    // this.setState({ isLoading: true });
+    // let request;
+    // request = axios.get(`${config.config.SERVER_URI}/launches`);
+    // request
+    //   .then(res => {
+    //     const launchResponse = res.data;
+    //     this.setState({ isLoading: false, launches: launchResponse });
+    //   })
+    //   .catch(err => {
+    //     this.setState({ isLoading: false });
+    //     console.log(err);
+    //     this.props.onError(
+    //       'Fetching launch programs failed. Please try again later.'
+    //     );
+    //   });
   };
 
   getSnapshotBeforeUpdate(prevProps, prevState) {

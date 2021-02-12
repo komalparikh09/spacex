@@ -11,7 +11,7 @@ console.log(config);
 console.log(process.env.NODE_ENV);
 console.log(process.env.PORT);
 console.log(process.env.MONGODB_URI);
-var hosturl = `${config.config.SERVER_URI}`;
+console.log(`${config.config.SERVER_URI}`);
 var launchYearArr = [];
 var launchSuccessArr = [];
 var launchLandingArr = [];

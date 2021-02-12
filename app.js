@@ -13,6 +13,13 @@ const db = require('./db');
 const app = express();
 const cors = require('cors');
 app.use(cors());
+
+app.use(express.static(path.join(__dirname, 'build')));
+
+app.get('*', function (req, res) {
+ res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
+
 app.use(bodyParser.json({ limit: '500kb' }));
 // app.use('/images', express.static(path.join('backend/images')));
 app.use((req, res, next) => {

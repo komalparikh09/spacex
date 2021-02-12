@@ -33,7 +33,7 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "start:server": "node app.js",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install && npm run build && npm run start:server"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install && npm run build && NPM_CONFIG_PRODUCTION=true"
   },
   "engines": {
     "node": "^14.15.1"

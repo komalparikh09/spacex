@@ -3,6 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 require('dotenv').config();
 const mongodb = require('mongodb').MongoClient;
+const port = process.env.PORT || 3100;
 
 const launchRoutes = require('./routes/launches');
 const searchlaunchRoutes = require('./routes/searchlaunches');
@@ -13,7 +14,7 @@ const app = express();
 const cors = require('cors');
 app.use(cors());
 app.use(bodyParser.json({ limit: '500kb' }));
-app.use('/images', express.static(path.join('backend/images')));
+// app.use('/images', express.static(path.join('backend/images')));
 app.use((req, res, next) => {
   // Set CORS headers so that the React SPA is able to communicate with this server
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -25,13 +26,21 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use('/launches', launchRoutes);
-app.use('/searchlaunches', searchlaunchRoutes);
+app.use('/api/launches', launchRoutes);
+app.use('/api/searchlaunches', searchlaunchRoutes);
+
+app.get("/", function(req, res) {
+  //when we get an http get request to the root/homepage
+  res.send("Hello World");
+});
+
 console.log('nodeenv' + process.env.NODE_ENV);
 db.initDb((err, db) => {
   if (err) {
     console.log(err);
   } else {
-    app.listen(process.env.PORT || 3100);
+    console.log(process.env.PORT);
+    console.log(port);
+    app.listen(port || 3100);
   }
 });

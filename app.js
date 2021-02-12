@@ -34,13 +34,12 @@ app.get("/", function(req, res) {
   res.send("Hello World");
 });
 
-console.log('nodeenv' + process.env.NODE_ENV);
+console.log('nodeenv ' + process.env.NODE_ENV);
 db.initDb((err, db) => {
   if (err) {
     console.log(err);
   } else {
     console.log(process.env.PORT);
-    console.log(port);
     app.listen(port || 3100);
   }
 });

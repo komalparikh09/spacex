@@ -29,10 +29,10 @@ app.use((req, res, next) => {
 app.use('/api/launches', launchRoutes);
 app.use('/api/searchlaunches', searchlaunchRoutes);
 
-app.get("/", function(req, res) {
-  //when we get an http get request to the root/homepage
-  res.send("Hello World");
-});
+// app.get("/", function(req, res) {
+//   //when we get an http get request to the root/homepage
+//   res.send("Hello World");
+// });
 
 app.use(express.static(path.join(__dirname, 'build')));
 

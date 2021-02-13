@@ -1,7 +1,7 @@
 require('dotenv').config();
 const mongodb = require('mongodb');
 const MongoClient = mongodb.MongoClient;
-const mongoDbUrl = process.env.MONGODB_URI || 'mongodb+srv://kridha:kridha7@cluster0-3fd0i.mongodb.net/spacex?retryWrites=true&w=majority';
+const mongoDbUrl = process.env.MONGODB_URI || process.env.DATABASE_URL;
 let _db;
 
 const initDb = callback => {

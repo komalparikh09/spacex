@@ -3,8 +3,6 @@ import LaunchCard from './LaunchCard/LaunchCard';
 import './LaunchCards.css';
 
 const launchCards = props => {
-  console.log(props);
-  console.log(props.launches);
   return (
   <section className="userCards">
     {props.launches.slice(props.limit, props.limit + 20).map(p => (

@@ -30,7 +30,6 @@ app.use('/api/launches', launchRoutes);
 app.use('/api/searchlaunches', searchlaunchRoutes);
 
 app.get("/", function(req, res) {
-  //when we get an http get request to the root/homepage
   res.send("Hello World");
 });
 
@@ -40,12 +39,10 @@ app.get('*', function (req, res) {
  res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
-console.log('nodeenv ' + process.env.NODE_ENV);
 db.initDb((err, db) => {
   if (err) {
     console.log(err);
   } else {
-    console.log(process.env.PORT);
     app.listen(port || 3100);
   }
 });

@@ -7,14 +7,12 @@ import './LaunchPrograms.css';
 import config from './../../configs';
 const $ = window.$;
 
-console.log(process.env.NODE_ENV);
-console.log(`${config.config.SERVER_URI}`);
 var launchYearArr = [];
 var launchSuccessArr = [];
 var launchLandingArr = [];
 var filteredLaunchesArr = [];
 var successValues = ['True', 'False'];
-/* sample images used because mission patches in the API are from imgbox which is banned in India */
+/* sample images used because mission patches in the API are from imgbox which is banned in India 
 var images = ['https://i.redd.it/gib13kvyjit41.png',
   'https://i.redd.it/2aahjwc9f50y.png',
   'https://upload.wikimedia.org/wikipedia/commons/f/f7/Sts-120-patch.png',
@@ -24,7 +22,7 @@ var images = ['https://i.redd.it/gib13kvyjit41.png',
   'https://i.imgur.com/lcpsq0x.png',
   'https://spacextimemachine.com/images/78/923623001598818554.jpeg',
   'https://upload.wikimedia.org/wikipedia/commons/4/4e/SpaceX_CRS-4_Patch.png',
-  'https://upload.wikimedia.org/wikipedia/commons/a/ac/SpaceX_CRS-6_Patch.png']; 
+  'https://upload.wikimedia.org/wikipedia/commons/a/ac/SpaceX_CRS-6_Patch.png']; */
 
 class LaunchProgramsPage extends Component {
 

@@ -7,8 +7,6 @@ import './LaunchPrograms.css';
 import config from './../../configs';
 const $ = window.$;
 
-console.log(process.env.NODE_ENV);
-console.log(`${config.config.SERVER_URI}`);
 var launchYearArr = [];
 var launchSuccessArr = [];
 var launchLandingArr = [];

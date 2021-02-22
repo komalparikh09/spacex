@@ -5,7 +5,7 @@ import './LaunchCards.css';
 const launchCards = props => {
   return (
   <section className="userCards">
-    {props.launches.slice(props.limit, props.limit + 20).map(p => (
+    {props.launches.map(p => (
       <LaunchCard
         key={p._id}
         mission_name={p.mission_name}

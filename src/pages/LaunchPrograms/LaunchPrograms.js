@@ -2,10 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import LaunchCards from '../../components/LaunchCards/LaunchCards';
 import CustomChatbot from '../../components/CustomChatbot/CustomChatbot';
-import Button from '../../components/Button/Button';
 import './LaunchPrograms.css';
 import config from './../../configs';
-const $ = window.$;
 
 var launchYearArr = [];
 var launchSuccessArr = [];
@@ -23,17 +21,14 @@ class LaunchProgramsPage extends Component {
     launchYearsSelected: [],
     launchSuccessSelected: [],
     launchLandingSelected: [],
-    initialRender: true,
     filterClass: 'filterBox',
     isActive: false,
     btnToggleId: [],
-    _id: '',
-    limit: 0
+    _id: ''
   };
 
   componentDidMount() {
     this.setState({ isLoading: false, filteredLaunches: [] });
-    setTimeout(() => this.setState({ initialRender: false }), 6000);
     launchYearArr = [];
     launchSuccessArr = [];
     launchLandingArr = [];
@@ -99,38 +94,8 @@ class LaunchProgramsPage extends Component {
   componentDidUpdate(prevProps, prevState, snapshot) {
     // for (var i = 0; i < this.state.btnToggleId; i++) {
     //   var btnFilter = document.getElementById(this.state.btnToggleId[i]);
-    //   $(btnFilter).className = "filterBoxSelected";
+    //   btnFilter.className = "filterBoxSelected";
     // }
-    // $('#tblLaunches').DataTable({
-    //   retrieve: true,
-    //   buttons: [
-    //     'colvis'
-    //   ],
-    //   responsive: {
-    //     details: {
-    //       type: 'column'
-    //     }
-    //   },
-    //   columnDefs: [{
-    //     className: 'control',
-    //     orderable: false,
-    //     targets: 0
-    //   }],
-    //   columns: [
-    //     { "type": "string", "orderable": true, "searchable": true },
-    //     { "type": "string", "orderable": true },
-    //     { "type": "number", "orderable": true },
-    //     { "type": "number", "orderable": true },
-    //     { "type": "number", "orderable": true },
-    //     { "type": "string", "orderable": true },
-    //     { "type": "number", "orderable": true }
-    //   ],
-    //   paging: false,
-    //   // "order": [[1, 'asc']],
-    //   "bInfo": false,
-    //   searchable: true,
-    //   fixedColumns: true
-    // });
   }
 
   getRandomIn = max => {
@@ -140,11 +105,6 @@ class LaunchProgramsPage extends Component {
   inputChangeHandler = (event, input) => {
     this.setState({ [input]: event.target.value });
   };
-
-  nextPageLaunchesHandler = () => {
-    var lim = this.state.limit;
-    this.setState({ limit: lim + 20 });
-  }
 
   addLaunchHandler = event => {
     event.preventDefault();
@@ -208,7 +168,7 @@ class LaunchProgramsPage extends Component {
         for (var i = 0, len = filteredLaunchesArr.length; i < len; i++) {
           obj[filteredLaunchesArr[i]['_id']] = filteredLaunchesArr[i];
         }
-        filteredLaunchesArr = new Array();
+        filteredLaunchesArr = [];
         for (var key in obj) {
           filteredLaunchesArr.push(obj[key]);
         }
@@ -246,9 +206,16 @@ class LaunchProgramsPage extends Component {
   selectFilter = (event, btnId) => {
     var btnFilter = document.getElementById(btnId);
     this.setState({ isActive: !this.state.isActive, filteredLaunches: [] });
-    $(btnFilter).toggleClass("filterBox filterBoxSelected");
+    if (btnFilter.classList.contains('filterBoxSelected')) {
+      btnFilter.classList.remove('filterBoxSelected');
+      btnFilter.classList.add('filterBox');
+    }
+    else if (btnFilter.classList.contains('filterBox')) {
+      btnFilter.classList.remove('filterBox');
+      btnFilter.classList.add('filterBoxSelected');
+    }
     if (btnFilter.className.includes('filterBoxSelected')) {
-      $(btnFilter).className = 'filterBoxSelected';
+      btnFilter.className = 'filterBoxSelected';
       var btnSelectedId = [...this.state.btnToggleId];
       btnSelectedId.push(btnId);
       this.setState({ btnToggleId: btnSelectedId });
@@ -474,57 +441,36 @@ class LaunchProgramsPage extends Component {
 
     let launchCards = (
       <div>
-        {this.state.selectedFilter.length > 0 ? filteredLaunchesArr.length > 0 ? <LaunchCards launches={filteredLaunchesArr} limit={this.state.limit} /> : <span className="center-span"><h4>Oops! No SpaceX Launch Programs found for the chosen filter.</h4></span> : <LaunchCards launches={this.state.launches} limit={this.state.limit} />}
+        {this.state.selectedFilter.length > 0 ? filteredLaunchesArr.length > 0 ? <LaunchCards launches={filteredLaunchesArr} /> : <span className="center-span"><h4>Oops! No SpaceX Launch Programs found for the chosen filter.</h4></span> : <LaunchCards launches={this.state.launches} />}
       </div>
     );
 
-    let prevnextBtn = null;
-    if (this.state.launches.length > 20) {
-      prevnextBtn = (
-        <div className="container">
-          <Button onClick={this.nextPageLaunchesHandler}>P R E V I O U S</Button>&nbsp;&nbsp;&nbsp;&nbsp;<Button onClick={this.nextPageLaunchesHandler}>N E X T</Button>
-        </div>
-      );
-    }
-
     let content = null;
-    if (this.state.initialRender) {
-      content = (
-        <div>
-          <img className="bg" src="https://cdn.dribbble.com/users/46035/screenshots/1978211/kareo_ehr_rocket.gif" alt="Application Initial Render Animation"/>
+    content = (
+      <div>
+        <br />
+        <br />
+        <b><h1>SpaceX Launch Programs</h1></b>
+        {/* <button id="addlaunch" onClick={this.addLaunchHandler}>Add Launch Programs</button> */}
+        <div className="left-div">
+          {filter}
         </div>
-      );
-    }
-    else {
-      content = (
-        <div>
-          <img className="logo" src="https://i.pinimg.com/originals/32/b8/82/32b88274cc7cd521b05fbaad65649a68.gif" alt="SpaceX Logo Animation" />
-          <b><h1>SpaceX Launch Programs</h1></b>
-          {/* <button id="addlaunch" onClick={this.addLaunchHandler}>Add Launch Programs</button> */}
-          <div className="left-div">
-            {filter}
-          </div>
-          <div className="right-div">
-            {this.state.isLoading ?
-              <div>
-                <img className="bg" src="https://cdn.dribbble.com/users/623359/screenshots/2972736/rocket-launch.gif" alt="Content Loading Animation" />
-              </div>
-             : launchCards}
-            <br />
-            <br />
-            <br />
-            <br />
-            <div className="prev-next">{prevnextBtn}</div>
-            <br />
-            <br />
-            <br />
-            <br />
-            <footer className="prev-next"><b><span>Developed by:  </span></b><span>Komal K. Parikh</span></footer>
-          </div>
-          <CustomChatbot />
+        <div className="right-div">
+          {this.state.isLoading ? <div>Loading...</div> : launchCards}
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <footer className="prev-next"><b><span>Developed by:  </span></b><span>Komal K. Parikh</span></footer>
+          <br />
         </div>
-      );
-    }
+        <CustomChatbot />
+      </div>
+    );
     return <main>{content}</main>;
   }
 }

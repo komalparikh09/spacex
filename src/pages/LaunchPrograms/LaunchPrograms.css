@@ -1,7 +1,6 @@
 body {
   background-color: #E3E3E3;
 }
-
 .edit-product__form {
     width: 90%;
     margin: auto;
@@ -15,7 +14,6 @@ body {
     text-align: center;
     border-collapse: collapse;
     border: 3px solid #ddd;
-    /* width: 90%; */
     word-wrap: break-word;
   }
    .display td, .display th {
@@ -36,44 +34,6 @@ body {
     background-color: #DCDCDC;
     color: #000000;
   }
-   /* td.details-control {
-    background: url('../../images/greenplus.jpg') no-repeat center center;
-    background-size: 60%;
-    cursor: pointer;
-  }
-  tr.shown td.details-control {
-    background: url('../../images/redminus.jpg') no-repeat center center;
-    background-size: 60%;
-  } */
-   /* .parent ~ .cchild {
-    display: none;
-  }
-  .open .parent ~ .cchild {
-    display: table-row;
-  }
-  .parent {
-    cursor: pointer;
-  }
-  tbody {
-    color: #212121;
-  }
-  .open {
-    background-color: #0BA6B6;
-  }
-  .open .cchild {
-    background-color: #0BA6B6;
-    color: white;
-  }
-  .parent > *:last-child {
-    width: 30px;
-  } */
-   /* .child {
-    background-color: #0BA6B6;
-    color: white;
-    font-weight: bold;
-    text-align: left;
-  } */
-   /* DataTables Responsive With FontAwesome */
    table.dataTable.dtr-inline.collapsed > tbody > tr > td:first-child,
   table.dataTable.dtr-inline.collapsed > tbody > tr > th:first-child {
     position: relative;
@@ -82,21 +42,8 @@ body {
   }
   table.dataTable.dtr-inline.collapsed > tbody > tr > td:first-child:before,
   table.dataTable.dtr-inline.collapsed > tbody > tr > th:first-child:before {
-    /*top: 8px;
-    left: 4px;
-    height: 16px;
-    width: 16px;*/
     display: block;
     position: absolute;
-    /*color: white;
-    border: 2px solid white;
-    border-radius: 16px;
-    text-align: center;
-    line-height: 14px;
-    box-shadow: 0 0 3px #444;
-    box-sizing: content-box;
-    content: '+';
-    background-color: #31b131;*/
     display: block;
     position: absolute;
     font-family: "FontAwesome";
@@ -108,8 +55,6 @@ body {
   }
   table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before,
   table.dataTable.dtr-inline.collapsed > tbody > tr.parent > th:first-child:before {
-    /*content: '-';
-    background-color: #d33333;*/
     font-family: "FontAwesome";
     content: '\f146';
   }
@@ -138,30 +83,13 @@ body {
   }
   table.dataTable.dtr-column > tbody > tr > td.control:before,
   table.dataTable.dtr-column > tbody > tr > th.control:before {
-    /*top: 50%;
-    left: 50%;
-    height: 16px;
-    width: 16px;
-    margin-top: -10px;
-    margin-left: -10px;*/
     display: block;
     position: absolute;
     font-family: "FontAwesome";
     content: '\f0fe';
-    /*color: white;
-    border: 2px solid white;
-    border-radius: 16px;
-    text-align: center;
-    line-height: 14px;
-    box-shadow: 0 0 3px #444;
-    box-sizing: content-box;
-    content: '+';
-    background-color: #31b131;*/
   }
   table.dataTable.dtr-column > tbody > tr.parent td.control:before,
   table.dataTable.dtr-column > tbody > tr.parent th.control:before {
-    /*content: '-';
-    background-color: #d33333;*/
    font-family: "FontAwesome";
     content: '\f146';
   }

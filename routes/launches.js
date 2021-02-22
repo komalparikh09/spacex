@@ -113,19 +113,45 @@ router.delete('/:id', (req, res, next) => {
         });
 });
 
-// Get multiple launches based on specialization and availability
+// Get multiple launches based on the filters selected
+const launches = [];
+router.get('/searchlaunches', (req, res, next) => {
+    if (req.query.launch_year && req.query.launch_success && req.query.launch_landing) {
+        db.getDb()
+            .db()
+            .collection('launches')
+            .find({ $and: [{ "launch_year": { $in: req.query.launch_year } }, { "launch_success": { $in: req.query.launch_success } }, { "launch_landing": { $in: req.query.launch_landing } }] })
+            .forEach(launchDoc => {
+                launches.push(launchDoc);
+            })
+            .then(result => {
+                res.status(200).json(launches);
+            })
+            .catch(err => {
+                console.log(err);
+                res.status(500).json({ message: 'An error occurred.' });
+            });
+    }
+});
+
+// Get multiple launches based on launch year, launch success, launch landing
 router.get('/:launch_year, /:launch_success, /:launch_landing', (req, res, next) => {
-    db.getDb()
-        .db()
-        .collection('launches')
-        .find({ $and: [{ $text: { $search: new String(req.params.launch_year.replace(",", "")) } }, { $text: { $search: new String(req.params.launch_success.replace(",", "")) } }, { $text: { $search: new String(req.params.launch_landing.replace(",", "")) } }] })
-        .then(launchDoc => {
-            res.status(200).json(launchDoc);
-        })
-        .catch(err => {
-            console.log(err);
-            res.status(500).json({ message: 'An error occurred.' });
-        });
+    if (req.query.launch_year && req.query.launch_success && req.query.launch_landing) {
+        db.getDb()
+            .db()
+            .collection('launches')
+            .find({ $and: [{ "launch_year": { $in: req.query.launch_year } }, { "launch_success": { $in: req.query.launch_success } }, { "launch_landing": { $in: req.query.launch_landing } }] })
+            .forEach(launchDoc => {
+                launches.push(launchDoc);
+            })
+            .then(result => {
+                res.status(200).json(launches);
+            })
+            .catch(err => {
+                console.log(err);
+                res.status(500).json({ message: 'An error occurred.' });
+            });
+    }
 });
 
 module.exports = router;

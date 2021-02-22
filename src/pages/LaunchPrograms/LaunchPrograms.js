@@ -168,9 +168,14 @@ class LaunchProgramsPage extends Component {
         for (var i = 0, len = filteredLaunchesArr.length; i < len; i++) {
           obj[filteredLaunchesArr[i]['_id']] = filteredLaunchesArr[i];
         }
-        filteredLaunchesArr = [];
+        filteredLaunchesArr = new Array();
         for (var key in obj) {
           filteredLaunchesArr.push(obj[key]);
+        }
+        if (launchYearArr.length >= 1) {
+          filteredLaunchesArr = filteredLaunchesArr.filter(function (launch) {
+            return launchYearArr.includes(launch.launch_year);
+          });
         }
         if (launchSuccessArr.length === 1 && launchSuccessArr[0] === 'true') {
           filteredLaunchesArr = filteredLaunchesArr.filter(function (launch) {

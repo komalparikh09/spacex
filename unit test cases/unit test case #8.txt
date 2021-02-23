@@ -1,0 +1,5 @@
+Unit Test Case: 8
+
+Description: Verify that if there are no SpaceX launch programs for the chosen filter, we dispalay the appropriate text, e.g., "There are no launch programs for the chosen filter."
+
+Status: Passed

@@ -1,0 +1,5 @@
+Unit Test Case: 1
+
+Description: Ensure that the site loads up according to the format provided with the specified header at the top left corner, the filters with the specific filter headers on the left and the launch program cards on the right.
+
+Status: Passed

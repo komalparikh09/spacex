@@ -1,0 +1,5 @@
+Unit Test Case: 7
+
+Description: Verify that based on the filter selected or deselected, the URL should be updated accordingly.
+
+Status: Passed

@@ -1,0 +1,5 @@
+Unit Test Case: 9
+
+Description: Verify that there is a loading text before the actual content renders, i.e. during the waiting time.
+
+Status: Passed

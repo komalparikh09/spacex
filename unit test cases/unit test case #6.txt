@@ -1,0 +1,5 @@
+Unit Test Case: 6
+
+Description: Verify that upon clicking any land success filter, the corresponding SpaceX launch programs are displayed with the parameter as Successful Landing.
+
+Status: Passed

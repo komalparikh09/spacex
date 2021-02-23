@@ -1,0 +1,5 @@
+Unit Test Case: 3
+
+Description: Verify that when a filter is chosen, the color of the filter changes to lime from sea green, i.e., it should be highlighted; upon deselect, the filter color should change back to the original color.
+
+Status: Passed

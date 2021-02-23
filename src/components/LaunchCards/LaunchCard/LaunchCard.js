@@ -15,7 +15,7 @@ const launch = props => {
   return (
     <a href={props.article_link} target="_blank">
       <article className="main-article">
-        <label for={props.id}><img src={props.image} alt="SpaceX Launch Program Mission Patch"/></label>
+        <label for={props.id}><img src={props.image} alt="SpaceX Launch Program Mission Patch" width="170px" height="190px"/></label>
         <br />
         <div className="name">
           {props.mission_name}&nbsp;#{props.flight_number}

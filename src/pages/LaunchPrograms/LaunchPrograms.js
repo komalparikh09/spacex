@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import LaunchCards from '../../components/LaunchCards/LaunchCards';
-import CustomChatbot from '../../components/CustomChatbot/CustomChatbot';
 import './LaunchPrograms.css';
 import config from './../../configs';
 
@@ -427,17 +426,17 @@ class LaunchProgramsPage extends Component {
       <div className="filter-div">
         <b><h3>Filters</h3></b>
         <div>
-          <h5 className="filter-name">Launch Year</h5>
+          <h4 className="filter-name">Launch Year</h4>
           <hr className="line-divider" />
           {this.renderLaunchYearFilter()}
         </div>
         <div>
-          <h5 className="filter-name">Successful Launch</h5>
+          <h4 className="filter-name">Successful Launch</h4>
           <hr className="line-divider" />
           {this.renderLaunchSuccessFilter()}
         </div>
         <div>
-          <h5 className="filter-name">Successful Landing</h5>
+          <h4 className="filter-name">Successful Landing</h4>
           <hr className="line-divider" />
           {this.renderLaunchLandingFilter()}
         </div>
@@ -455,7 +454,7 @@ class LaunchProgramsPage extends Component {
       <div>
         <br />
         <br />
-        <b><h1>SpaceX Launch Programs</h1></b>
+        <b><h2>SpaceX Launch Programs</h2></b>
         {/* <button id="addlaunch" onClick={this.addLaunchHandler}>Add Launch Programs</button> */}
         <div className="left-div">
           {filter}
@@ -473,7 +472,6 @@ class LaunchProgramsPage extends Component {
           <footer className="prev-next"><b><span>Developed by:  </span></b><span>Komal K. Parikh</span></footer>
           <br />
         </div>
-        <CustomChatbot />
       </div>
     );
     return <main>{content}</main>;
